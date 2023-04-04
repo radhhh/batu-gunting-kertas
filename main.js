@@ -22,7 +22,15 @@ function playRound(playerSelection, computerSelection){
     else return "LOSE";
 }
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
+function playGame(){
+    for(let i = 0; i < 5; i++){
+        let playerSelection= prompt("Pick your choice", "");
+        const computerSelection = getComputerChoice();
+        playerSelection = playerSelection.toLowerCase();
 
-console.log(playRound(playerSelection, computerSelection));
+        console.log(`Player chose ${playerSelection}, computer chose ${computerSelection}`)
+        console.log(`The result is ${playRound(playerSelection, computerSelection)}`);
+    }
+}
+
+playGame();
