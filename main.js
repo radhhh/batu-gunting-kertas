@@ -22,15 +22,19 @@ function playRound(playerSelection, computerSelection){
     else return "LOSE";
 }
 
-function playGame(){
-    for(let i = 0; i < 5; i++){
-        let playerSelection= prompt("Pick your choice", "");
+function playGame(indexSelection){
         const computerSelection = getComputerChoice();
-        playerSelection = playerSelection.toLowerCase();
-
+        let playerSelection;
+        if(indexSelection == 0) playerSelection = "rock";
+        else if(indexSelection == 1) playerSelection = "paper";
+        else playerSelection = "scissor";
         console.log(`Player chose ${playerSelection}, computer chose ${computerSelection}`)
         console.log(`The result is ${playRound(playerSelection, computerSelection)}`);
-    }
 }
 
-playGame();
+function monitorButton(currentButton, index){
+    currentButton.addEventListener('click', () => playGame(index));
+}
+
+const allButtons = document.querySelectorAll(".choice");
+allButtons.forEach(monitorButton)
